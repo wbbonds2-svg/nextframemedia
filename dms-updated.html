@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Digital Music Systems (DMS) — Jukeboxes · ATMs · Games · Seattle, WA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+:root{--nv:#1d2d60;--nd:#111d45;--nm:#2b3f7d;--gd:#45802e;--gl:#7cba5e;--gb:#4e8935;--gr:#6b7280;--tx:#161a22;--bd:#e2e6e0;--of:#f5f7f4;--rd:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:var(--tx);overflow-x:hidden}
+a{text-decoration:none}
+/* ---- shared logo asset: embedded once, reused everywhere ---- */
+.dlogo{background-color:#fff;background-image:url("data:image/jpeg;base64,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");background-repeat:no-repeat;background-position:center center;background-size:90% auto;border-radius:9px;flex-shrink:0}
+.topbar{background:var(--nd);color:#fff;text-align:center;padding:8px 20px;font-size:13px}
+.topbar a{color:var(--gl);font-weight:600}
+nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--bd);box-shadow:0 2px 16px rgba(29,45,96,.07)}
+.ni{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.logo{display:flex;align-items:center;gap:11px;padding:11px 0;cursor:pointer}
+.lm{width:132px;height:38px}
+.ls{font-size:10px;color:var(--gr);letter-spacing:1.2px;text-transform:uppercase}
+@media(max-width:560px){.logo .ls{display:none}}
+.nl{display:flex;list-style:none;gap:0}
+.nl a{display:block;color:#5b6472;font-size:11px;font-weight:500;letter-spacing:.4px;text-transform:uppercase;padding:17px 7px;border-bottom:3px solid transparent;transition:.2s;cursor:pointer}
+.nl a:hover,.nl a.on{color:var(--nv);border-bottom-color:var(--gd)}
+.ncta{background:var(--gd);color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:8px;cursor:pointer;margin-left:8px;white-space:nowrap;border:none;font-family:inherit}
+.ncta:hover{background:#37691f}
+.hbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.hbg span{display:block;width:22px;height:2px;background:var(--nv);border-radius:2px}
+.mob{display:none;background:#fff;border-top:1px solid var(--bd);padding:14px 20px}
+.mob a{display:block;color:var(--tx);font-size:14px;padding:9px 0;border-bottom:1px solid var(--bd);cursor:pointer}
+.mob a:last-child{border:none;color:var(--gd)}
+@media(max-width:980px){.nl{display:none}.ncta{display:none}.hbg{display:flex}.mob.open{display:block}}
+.pg{display:none}.pg.on{display:block}
+.hero{background:linear-gradient(160deg,#ffffff,#f5f8f2 55%,#edf3e9);min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231d2d60' fill-opacity='0.035'%3E%3Cpath d='M0 0h20v20H0zM20 20h20v20H20z'/%3E%3C/g%3E%3C/svg%3E")}
+.hi{max-width:1200px;margin:0 auto;padding:72px 20px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:1;width:100%}
+@media(max-width:768px){.hi{grid-template-columns:1fr;gap:32px}}
+.eye{display:inline-block;background:rgba(78,137,53,.12);color:var(--gd);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(78,137,53,.28)}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,84px);color:var(--nv);line-height:.95;letter-spacing:2px;margin-bottom:22px}
+.hero h1 span{color:var(--gd)}
+.hd{font-size:16px;color:var(--gr);line-height:1.7;margin-bottom:32px;font-weight:300}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap}
+.hnews{background:var(--nv);border:1px solid var(--nv);border-radius:var(--rd);padding:24px}
+.hnews h3{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--gl);letter-spacing:2px;margin-bottom:14px}
+.ni2{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:flex-start}
+.ni2:last-child{border:none;padding-bottom:0}
+.nd2{width:7px;height:7px;background:var(--gd);border-radius:50%;margin-top:5px;flex-shrink:0}
+.ni2 p{font-size:13px;color:rgba(255,255,255,.72);line-height:1.5}
+.hnall{display:inline-block;margin-top:16px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gl);cursor:pointer}
+.hnall:hover{color:#fff}
+.hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border-radius:10px;overflow:hidden;margin-top:32px}
+.st{background:#fff;padding:18px;text-align:center}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gd);line-height:1}
+.sl{font-size:10px;color:var(--gr);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.sec{padding:64px 20px}.si{max-width:1200px;margin:0 auto}
+.soff{background:var(--of)}.sdk{background:linear-gradient(135deg,var(--nd),var(--nv))}
+.slbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);margin-bottom:8px;display:block}
+.stit{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);color:var(--nv);line-height:1.2;margin-bottom:14px}
+.stit.w{color:#fff}
+.sbdy{font-size:15px;color:var(--gr);line-height:1.75;max-width:540px}
+.sbdy.w{color:rgba(255,255,255,.68)}
+.div{width:44px;height:3px;background:var(--gd);border-radius:2px;margin-bottom:22px}
+.ph{background:linear-gradient(160deg,#ffffff,#f5f8f2);padding:56px 20px 46px;border-bottom:3px solid var(--gd);position:relative;overflow:hidden}
+.phi{max-width:1200px;margin:0 auto}
+.phi h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,64px);color:var(--nv);letter-spacing:3px;margin-bottom:10px}
+.phi p{font-size:16px;color:var(--gr);max-width:520px;font-weight:300}
+.cg{display:grid;gap:18px;margin-top:40px}
+.cg2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.cg3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border-radius:var(--rd);border:1px solid var(--bd);padding:24px;transition:.25s;display:block;color:inherit}
+.card:hover{box-shadow:0 12px 40px rgba(29,45,96,.12);transform:translateY(-2px);border-color:transparent}
+.ci{width:48px;height:48px;background:rgba(78,137,53,.10);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.card h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--nv);margin-bottom:8px}
+.card p{font-size:13px;color:var(--gr);line-height:1.6}
+.card ul{list-style:none;margin-top:10px}
+.card ul li{font-size:13px;color:var(--gr);padding:4px 0;display:flex;gap:7px}
+.card ul li::before{content:'✓';color:var(--gd);font-weight:700;flex-shrink:0}
+.tc{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.tc.fl{direction:rtl}.tc.fl>*{direction:ltr}
+@media(max-width:768px){.tc{grid-template-columns:1fr;gap:28px}.tc.fl{direction:ltr}}
+.fiw{border-radius:16px;background:var(--of);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:72px;border:1px solid var(--bd)}
+.cl{list-style:none;margin-top:18px}
+.cl li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:14px;color:var(--tx);border-bottom:1px solid var(--bd)}
+.cl li:last-child{border:none}
+.ck{width:20px;height:20px;background:var(--nv);border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--gl);font-size:11px;flex-shrink:0;margin-top:1px}
+.bp{background:var(--gd);color:#fff;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;display:inline-block;border:none;cursor:pointer;font-family:inherit;transition:.2s}
+.bp:hover{background:#37691f;transform:translateY(-1px)}
+.bo{background:transparent;color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border-radius:10px;display:inline-block;border:1.5px solid rgba(255,255,255,.32);transition:.2s;cursor:pointer;font-family:inherit}
+.bo:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.bs{background:#fff;color:var(--nv);font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;display:inline-block;border:1.5px solid var(--nv);transition:.2s;cursor:pointer;font-family:inherit}
+.bs:hover{background:var(--nv);color:#fff}
+.ctab{background:linear-gradient(90deg,var(--nd),var(--nm));padding:52px 20px;text-align:center}
+.ctab h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,50px);color:#fff;letter-spacing:2px;margin-bottom:8px}
+.ctab p{font-size:15px;color:rgba(255,255,255,.62);margin-bottom:24px}
+.ctab a,.ctab button{margin:0 6px 10px;display:inline-block}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
+.tc2{background:#fff;border-radius:var(--rd);padding:28px;border:1px solid var(--bd);position:relative}
+.tc2::before{content:'"';font-family:'DM Serif Display',serif;font-size:72px;color:var(--gd);line-height:1;position:absolute;top:12px;right:20px;opacity:.2}
+.tc2 p{font-size:14px;color:var(--tx);line-height:1.72;font-style:italic;margin-bottom:16px}
+.ta{font-size:13px;font-weight:600;color:var(--nv)}
+.tb{font-size:12px;color:var(--gr)}
+.fg{margin-bottom:36px}
+.fgt{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--nv);letter-spacing:1.5px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.fgt::after{content:'';flex:1;height:1px;background:var(--bd)}
+.fi{border-bottom:1px solid var(--bd)}
+.fq{width:100%;text-align:left;background:none;border:none;padding:16px 0;font-size:14px;font-weight:600;color:var(--tx);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.fq:hover{color:var(--nv)}
+.fq .ar{color:var(--gd);font-size:16px;transition:transform .25s}
+.fq.op .ar{transform:rotate(180deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .3s}
+.fa.op{max-height:400px}
+.fa p{font-size:14px;color:var(--gr);line-height:1.68;padding-bottom:16px}
+.cgrid{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;margin-top:40px}
+@media(max-width:768px){.cgrid{grid-template-columns:1fr}}
+.cic{background:var(--nv);border-radius:var(--rd);padding:32px;color:#fff}
+.cic h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;color:var(--gl);margin-bottom:20px}
+.cr{display:flex;gap:12px;margin-bottom:18px;align-items:flex-start}
+.cico{width:38px;height:38px;background:rgba(124,186,94,.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cr strong{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.45);display:block;margin-bottom:3px}
+.cr a,.cr p{font-size:14px;color:#fff}
+.cr a:hover{color:var(--gl)}
+.cfw{background:var(--of);border-radius:var(--rd);padding:32px;border:1px solid var(--bd)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.fr{grid-template-columns:1fr}}
+.fg2{margin-bottom:14px}
+.fg2 label{display:block;font-size:13px;font-weight:600;color:var(--nv);margin-bottom:5px}
+.fg2 input,.fg2 select,.fg2 textarea{width:100%;font-size:14px;padding:10px 13px;border:1.5px solid var(--bd);border-radius:9px;background:#fff;color:var(--tx);font-family:inherit;outline:none;transition:.2s}
+.fg2 input:focus,.fg2 select:focus,.fg2 textarea:focus{border-color:var(--nv)}
+.fg2 textarea{min-height:88px;resize:vertical}
+.fsub{width:100%;padding:13px;background:var(--nv);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.fsub:hover{background:var(--nm)}
+.fsub:disabled{opacity:.6;cursor:wait}
+.badge{display:inline-flex;align-items:center;background:rgba(78,137,53,.10);color:var(--gd);font-size:12px;font-weight:600;padding:4px 11px;border-radius:20px;border:1px solid rgba(78,137,53,.24)}
+/* ================= HAPPENINGS ================= */
+.hpbar{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
+.hpchips{display:flex;gap:8px;flex-wrap:wrap}
+.hpchip{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:10px 17px;border-radius:999px;border:1.5px solid var(--bd);background:#fff;color:var(--gr);transition:.2s}
+.hpchip:hover{border-color:var(--nv);color:var(--nv)}
+.hpchip.on{background:var(--nv);border-color:var(--nv);color:#fff}
+.hpchip:focus-visible{outline:2px solid var(--gd);outline-offset:2px}
+.hpgrid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.hpc{background:#fff;border:1px solid var(--bd);border-radius:var(--rd);overflow:hidden;display:flex;flex-direction:column;transition:.25s;opacity:0;transform:translateY(14px)}
+.hpc.in{opacity:1;transform:none}
+.hpc:hover{box-shadow:0 12px 40px rgba(29,45,96,.12);transform:translateY(-3px);border-color:transparent}
+.hpmed{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--nv)}
+.hpmed img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.hpc:hover .hpmed img{transform:scale(1.05)}
+.hpph{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;background:linear-gradient(140deg,var(--nd),var(--nm) 58%,#3f7a2b);color:#fff}
+.hpph .em{font-size:52px;line-height:1}
+.hpph .lb{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:10px;font-weight:600}
+.hptag{position:absolute;top:12px;left:12px;z-index:2;font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:6px 11px;border-radius:6px;background:var(--nd);color:#fff}
+.hpc[data-cat="event"] .hptag{background:var(--gd);color:#fff}
+.hpstub{display:flex;border-bottom:1px dashed var(--bd);background:var(--of)}
+.hpdate{flex:0 0 auto;padding:12px 15px;text-align:center;border-right:1px dashed var(--bd)}
+.hpdate b{display:block;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--nv);line-height:1;letter-spacing:1px}
+.hpdate span{display:block;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--gr);margin-top:2px}
+.hpwhere{padding:12px 15px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.hpwhere strong{font-size:14px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hpwhere span{font-size:12px;color:var(--gr)}
+.hpbody{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.hpbody h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--nv);margin-bottom:8px;line-height:1.3}
+.hpbody p{font-size:13.5px;color:var(--gr);line-height:1.65}
+.hplink{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--nv)}
+.hplink:hover{color:var(--gd)}
+.hpempty{grid-column:1/-1;text-align:center;padding:52px 20px;color:var(--gr);font-size:15px}
+.hpsoc{margin-top:44px;background:var(--nv);border-radius:var(--rd);padding:30px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.hpsoc h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;color:var(--gl);margin-bottom:5px}
+.hpsoc p{font-size:14px;color:rgba(255,255,255,.6);max-width:420px}
+.hpsocb{display:flex;gap:10px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){.hpc{opacity:1;transform:none;transition:none}}
+footer{background:var(--nd);color:rgba(255,255,255,.55)}
+.fi2{max-width:1200px;margin:0 auto;padding:48px 20px 28px;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px}
+@media(max-width:768px){.fi2{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fi2{grid-template-columns:1fr}}
+.fb p{font-size:13px;line-height:1.68;margin-top:12px;max-width:250px}
+.fc h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gl);margin-bottom:12px}
+.fc a{display:block;font-size:13px;color:rgba(255,255,255,.5);padding:3px 0;transition:.2s;cursor:pointer}
+.fc a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.07)}
+.fboti{max-width:1200px;margin:0 auto;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:11px}
+/* PORTAL */
+.pw{min-height:calc(100vh - 120px);background:#0d1117}
+.plw{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 120px);background:linear-gradient(135deg,#0d1117,#011d40);padding:20px}
+.plc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:44px 36px;width:100%;max-width:400px}
+.pll{text-align:center;margin-bottom:28px}
+.plm{width:150px;height:42px;margin:0 auto 14px}
+.plc h2{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;letter-spacing:2px}
+.plc .sub{font-size:13px;color:rgba(255,255,255,.38);margin-top:3px}
+.pf{margin-bottom:16px}
+.pf label{display:block;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:7px}
+.pf input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.09);border-radius:9px;padding:12px 15px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:.2s}
+.pf input:focus{border-color:var(--gl)}
+.pf input::placeholder{color:rgba(255,255,255,.2)}
+.plb{width:100%;background:var(--gd);color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;transition:.2s;margin-top:4px}
+.plb:hover{background:var(--gb)}
+.perr{background:rgba(220,50,50,.14);border:1px solid rgba(220,50,50,.28);color:#ff8080;font-size:13px;padding:10px 14px;border-radius:9px;margin-bottom:14px;display:none}
+.perr.on{display:block}
+.pdash{display:none}
+.pdh{background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.07);padding:0 20px}
+.pdhi{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;flex-wrap:wrap;gap:8px}
+.pdb2{display:flex;align-items:center;gap:10px}
+.pbm{width:112px;height:32px}
+.pbn{font-family:'Bebas Neue',sans-serif;font-size:17px;color:#fff;letter-spacing:2px}
+.pbs{font-size:10px;color:rgba(255,255,255,.28);letter-spacing:1px}
+.pdacts{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pdun{font-size:13px;color:rgba(255,255,255,.48)}
+.gbtn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.55);font-size:12px;padding:6px 13px;border-radius:7px;cursor:pointer;font-family:inherit;transition:.2s}
+.gbtn:hover{background:rgba(255,255,255,.12);color:#fff}
+.abtn{background:rgba(124,186,94,.12);border:1px solid rgba(124,186,94,.26);color:var(--gl);font-size:12px;padding:6px 13px;border-radius:7px;cursor:pointer;font-family:inherit}
+.pdbody{max-width:1060px;margin:0 auto;padding:32px 20px}
+.ptabs{display:flex;gap:3px;margin-bottom:28px;background:rgba(255,255,255,.03);padding:5px;border-radius:10px;border:1px solid rgba(255,255,255,.07);width:fit-content}
+.ptab{padding:9px 20px;border-radius:7px;font-size:13px;font-weight:500;color:rgba(255,255,255,.42);cursor:pointer;transition:.2s;border:none;background:none;font-family:inherit}
+.ptab.on{background:var(--gd);color:#fff;font-weight:700}
+.ptab:hover:not(.on){color:#fff;background:rgba(255,255,255,.06)}
+.ppan{display:none}.ppan.on{display:block}
+.upz{border:2px dashed rgba(255,255,255,.12);border-radius:14px;padding:44px 20px;text-align:center;cursor:pointer;transition:.2s;position:relative;background:rgba(255,255,255,.02)}
+.upz:hover,.upz.ov{border-color:var(--gl);background:rgba(124,186,94,.05)}
+.upz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.upp{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 22px;margin-top:14px;display:none}
+.ptrack{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin-top:9px}
+.pfill{height:100%;background:linear-gradient(90deg,var(--gd),var(--gl));border-radius:3px;width:0%;transition:width .3s}
+.uok{background:rgba(30,180,100,.1);border:1px solid rgba(30,180,100,.22);border-radius:10px;padding:12px 18px;margin-top:10px;display:none;align-items:center;gap:9px;color:#5dde9a;font-size:13px;font-weight:500}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.vc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;cursor:pointer;transition:.22s}
+.vc:hover{border-color:rgba(124,186,94,.4);transform:translateY(-2px)}
+.vth{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(29,45,96,.85),rgba(43,63,125,.55));display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}
+.vtho{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s}
+.vc:hover .vtho{opacity:1}
+.vpc{width:44px;height:44px;background:rgba(69,128,46,.94);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.vinfo{padding:12px}
+.vtit{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vmet{font-size:11px;color:rgba(255,255,255,.3);display:flex;gap:9px}
+.vup{font-size:11px;color:rgba(255,255,255,.38);margin-top:2px}
+.emp{text-align:center;padding:52px 20px;color:rgba(255,255,255,.26)}
+.emp span{font-size:48px;display:block;margin-bottom:12px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.minn{background:#0d1117;border:1px solid rgba(255,255,255,.08);border-radius:18px;width:100%;max-width:760px;overflow:hidden}
+.mhdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid rgba(255,255,255,.07)}
+.mhdr span{font-size:15px;font-weight:600;color:#fff}
+.mcls{background:rgba(255,255,255,.06);border:none;color:rgba(255,255,255,.5);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center}
+.mcls:hover{background:rgba(255,255,255,.13);color:#fff}
+.mbdy{padding:18px 20px 22px}
+.mpl{width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;margin-bottom:10px}
+.mpl video{width:100%;height:100%;object-fit:contain}
+.mmet{font-size:12px;color:rgba(255,255,255,.32)}
+</style>
+</head>
+<body>
+<div class="topbar">Serving Western Washington &amp; Oregon Since 1980 &nbsp;·&nbsp; <a href="tel:8005419993">(800) 541-9993</a> &nbsp;·&nbsp; 24-Hour Message Line</div>
+<nav><div class="ni">
+<div class="logo" onclick="go('home')"><div class="dlogo lm" role="img" aria-label="Digital Music Systems (DMS)"></div><div><div class="ls">Jukeboxes · ATMs · Games</div></div></div>
+<ul class="nl">
+<li><a onclick="go('home')" id="n-home" class="on">Home</a></li>
+<li><a onclick="go('service')" id="n-service">Service</a></li>
+<li><a onclick="go('music')" id="n-music">Music</a></li>
+<li><a onclick="go('atms')" id="n-atms">ATMs</a></li>
+<li><a onclick="go('games')" id="n-games">Games</a></li>
+<li><a onclick="go('darts')" id="n-darts">Darts</a></li>
+<li><a onclick="go('trivia')" id="n-trivia">Trivia</a></li>
+<li><a onclick="go('happenings')" id="n-happenings">Happenings</a></li>
+<li><a onclick="go('reviews')" id="n-reviews">Reviews</a></li>
+<li><a onclick="go('about')" id="n-about">About</a></li>
+<li><a onclick="go('faq')" id="n-faq">FAQ</a></li>
+<li><a onclick="go('portal')" id="n-portal" style="color:var(--gd)">🔒 Staff</a></li>
+</ul>
+<button class="ncta" onclick="go('contact')">Get a Free Quote</button>
+<button class="hbg" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
+</div>
+<div class="mob" id="mob">
+<a onclick="go('home');document.getElementById('mob').classList.remove('open')">Home</a>
+<a onclick="go('service');document.getElementById('mob').classList.remove('open')">Service</a>
+<a onclick="go('music');document.getElementById('mob').classList.remove('open')">Music</a>
+<a onclick="go('atms');document.getElementById('mob').classList.remove('open')">ATMs</a>
+<a onclick="go('games');document.getElementById('mob').classList.remove('open')">Games</a>
+<a onclick="go('darts');document.getElementById('mob').classList.remove('open')">Darts</a>
+<a onclick="go('trivia');document.getElementById('mob').classList.remove('open')">Trivia</a>
+<a onclick="go('happenings');document.getElementById('mob').classList.remove('open')">Happenings</a>
+<a onclick="go('reviews');document.getElementById('mob').classList.remove('open')">Reviews</a>
+<a onclick="go('about');document.getElementById('mob').classList.remove('open')">About</a>
+<a onclick="go('faq');document.getElementById('mob').classList.remove('open')">FAQ</a>
+<a onclick="go('contact');document.getElementById('mob').classList.remove('open')">Contact</a>
+<a onclick="go('privacy');document.getElementById('mob').classList.remove('open')">Privacy Policy</a>
+<a onclick="go('portal');document.getElementById('mob').classList.remove('open')">🔒 Staff Portal</a>
+</div></nav>
+
+<!-- HOME -->
+<div class="pg on" id="pg-home">
+<section class="hero"><div class="hi">
+<div>
+<div class="dlogo" role="img" aria-label="Digital Music Systems (DMS)" style="width:300px;max-width:100%;height:78px;margin-bottom:22px"></div>
+<span class="eye">Est. 1980 · Seattle, WA</span>
+<h1>Jukeboxes<br/><span>ATMs</span><br/>&amp; Games</h1>
+<p class="hd">Digital Music Systems leads with outstanding service and all the latest equipment throughout Washington and Oregon. We make your venue more profitable.</p>
+<div class="hbtns"><button class="bp" onclick="go('contact')">Get a Free Quote</button><button class="bs" onclick="go('service')">Our Services</button></div>
+<div class="hstats"><div class="st"><div class="sn">1,800+</div><div class="sl">ATM Terminals</div></div><div class="st"><div class="sn">40+</div><div class="sl">Years in WA</div></div><div class="st"><div class="sn">24-HR</div><div class="sl">Message Line</div></div></div>
+</div>
+<div class="hnews"><h3>🔔 Latest Around Town</h3>
+<div class="ni2"><div class="nd2"></div><p>Maverick Gaming locations listening to great tunes across Puget Sound</p></div>
+<div class="ni2"><div class="nd2"></div><p>Western Washington Golden Tee Pro Tour — October 17–19</p></div>
+<div class="ni2"><div class="nd2"></div><p>DMS Network Round Robin Trivia continues on Tuesday nights</p></div>
+<div class="ni2"><div class="nd2"></div><p>Salt Water Saloon in Ocean Shores opens with music and games</p></div>
+<a class="hnall" onclick="go('happenings')">See all happenings →</a>
+</div></div></section>
+
+<section class="sec soff"><div class="si">
+<div style="text-align:center;margin-bottom:36px"><span class="slbl" style="text-align:center">What We Do</span><h2 class="stit" style="margin:0 auto">Everything Your Venue Needs</h2><div class="div" style="margin:14px auto 0"></div></div>
+<div class="cg cg3">
+<div class="card" onclick="go('music')" style="cursor:pointer"><div class="ci">🎵</div><h3>Digital Jukeboxes</h3><p>TouchTunes &amp; AMI with millions of songs. Full install at no cost to you.</p><ul><li>ASCAP, BMI &amp; SESAC licensed</li><li>Phone app integration</li><li>Background music &amp; TV sound</li></ul></div>
+<div class="card" onclick="go('atms')" style="cursor:pointer"><div class="ci">🏧</div><h3>ATM Services</h3><p>1,800+ terminals across the Pacific Northwest. No upfront cost, monthly commissions.</p><ul><li>ADA, EMV &amp; PCI compliant</li><li>No setup or upgrade costs</li><li>National placement available</li></ul></div>
+<div class="card" onclick="go('games')" style="cursor:pointer"><div class="ci">🎮</div><h3>Games &amp; Amusements</h3><p>Golden Tee, pool tables, pinball, crane games. Free placement, revenue share.</p><ul><li>PGA Tour Golden Tee Live</li><li>Crane &amp; redemption games</li><li>Coin-operated pool tables</li></ul></div>
+<div class="card" onclick="go('darts')" style="cursor:pointer"><div class="ci">🎯</div><h3>Dart Leagues</h3><p>Local, regional &amp; national soft-tip leagues with automated stats.</p><ul><li>DARTSLIVE &amp; Galaxy 3 boards</li><li>Western WA Dart League</li><li>National Tournament of Champions</li></ul></div>
+<div class="card" onclick="go('trivia')" style="cursor:pointer"><div class="ci">🧠</div><h3>Trivia / Tap TV</h3><p>No-host trivia around the clock. Weekly DMS contests with prizes drive repeat visits.</p><ul><li>Players use their phone</li><li>Tuesday night network contests</li><li>1,800+ ad templates</li></ul></div>
+<div class="card" onclick="go('happenings')" style="cursor:pointer"><div class="ci">📸</div><h3>Current Happenings</h3><p>Recent installations and upcoming events at the venues we service.</p><ul><li>New installs around Puget Sound</li><li>Tournaments &amp; league nights</li><li>Follow along on Facebook</li></ul></div>
+</div></div></section>
+
+<section class="sec sdk"><div class="si"><div class="tc">
+<div><span class="slbl">Why DMS</span><h2 class="stit w">Service is Our Difference</h2><div class="div"></div>
+<p class="sbdy w">Any company can get you the same equipment. Our techs pride themselves on rapid response and professional installations every time.</p>
+<ul class="cl" style="margin-top:20px">
+<li><div class="ck">✓</div><span style="color:rgba(255,255,255,.8)">Same-day response keeps equipment earning</span></li>
+<li><div class="ck">✓</div><span style="color:rgba(255,255,255,.8)">24-hour message line: (800) 541-9993 — calls returned promptly</span></li>
+<li><div class="ck">✓</div><span style="color:rgba(255,255,255,.8)">7-day service with all equipment</span></li>
+<li><div class="ck">✓</div><span style="color:rgba(255,255,255,.8)">Professional installations at no cost</span></li>
+</ul>
+<button class="bp" onclick="go('contact')" style="margin-top:28px">Get a Free Quote →</button></div>
+<div class="fiw" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)">🔧</div>
+</div></div></section>
+
+<section class="sec"><div class="si">
+<div style="text-align:center;margin-bottom:36px"><span class="slbl" style="text-align:center">Happy Customers</span><h2 class="stit" style="margin:0 auto">What Our Clients Say</h2><div class="div" style="margin:14px auto 0"></div></div>
+<div class="tg">
+<div class="tc2"><p>DMS offered a new ATM at no cost. I now make more on commission than with my previous vendor. They showed up within 3 hours when I called. Fantastic value.</p><div class="ta">Taek Kim</div><div class="tb">Meeker Street Bar &amp; Grill</div></div>
+<div class="tc2"><p>Having the TouchTunes Barrel Edition at Black Fleet Brewing has been nothing short of awesome. Stunning, rugged, and fits seamlessly into our decor. Highly recommend.</p><div class="ta">Kyle Maxwell, Director of Brewing Ops</div><div class="tb">Black Fleet Brewing, Tacoma, WA</div></div>
+<div class="tc2"><p>By far DMS has proven they are the peak of professional services. The equipment is premium and ATM maintenance is spot on. I already know who I have behind me.</p><div class="ta">Theo Chung, Owner</div><div class="tb">Ricky J's &amp; Coco Joe's, WA</div></div>
+</div></div></section>
+<section class="ctab"><h2>Ready to Upgrade Your Venue?</h2><p>Free equipment placement. Professional installation. Rapid service.</p><button class="bp" onclick="go('contact')">Get a Free Quote</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- HAPPENINGS -->
+<div class="pg" id="pg-happenings">
+<div class="ph"><div class="phi"><span class="slbl">What's New</span><h1>Happenings</h1><p>Recent installations and upcoming events at the venues we service around Washington and Oregon.</p></div></div>
+<section class="sec"><div class="si">
+<div class="hpbar">
+<div><span class="slbl">Around Town</span><h2 class="stit" style="margin-bottom:0">On the Floor Right Now</h2><div class="div" style="margin-top:14px"></div></div>
+<div class="hpchips" role="group" aria-label="Filter happenings">
+<button type="button" class="hpchip on" data-filter="all" onclick="hpFilter(this)">All</button>
+<button type="button" class="hpchip" data-filter="install" onclick="hpFilter(this)">Installations</button>
+<button type="button" class="hpchip" data-filter="event" onclick="hpFilter(this)">Events</button>
+</div>
+</div>
+<div class="hpgrid" id="hpgrid" aria-live="polite"></div>
+<div class="hpsoc">
+<div><h3>📣 Follow Along</h3><p>New installs, tournament results, and league nights get posted as they happen. Owners: send us photos after install day and we'll feature your location.</p></div>
+<div class="hpsocb">
+<a class="bp" href="https://www.facebook.com/digitalmusicsystems/" target="_blank" rel="noopener">📘 Facebook</a>
+<button class="bo" onclick="go('contact')">Send Us Photos</button>
+</div>
+</div>
+</div></section>
+<section class="ctab"><h2>Want Your Venue Featured?</h2><p>Free equipment placement, professional installation, and a spot on this page.</p><button class="bp" onclick="go('contact')">Get a Free Quote</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- SERVICE -->
+<div class="pg" id="pg-service">
+<div class="ph"><div class="phi"><span class="slbl">Why Choose DMS</span><h1>Service</h1><p>Any company can get you the same equipment. Service is our difference.</p></div></div>
+<section class="sec"><div class="si"><div class="tc">
+<div><span class="slbl">Our Commitment</span><h2 class="stit">Rapid Response, Every Time</h2><div class="div"></div>
+<p class="sbdy">Our service techs have been installing and servicing equipment for years. Same-day response keeps our equipment working and earning.</p>
+<ul class="cl" style="margin-top:18px"><li><div class="ck">✓</div>Same-day response on most service calls</li><li><div class="ck">✓</div>Usually at your location within 24 hours</li><li><div class="ck">✓</div>7-day service with all placements</li><li><div class="ck">✓</div>Professional installation at no charge</li></ul></div>
+<div><div style="background:var(--nv);border-radius:14px;padding:32px;text-align:center;margin-bottom:18px;border-top:4px solid var(--gb)"><p style="font-size:11px;font-weight:700;color:var(--gl);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">24-Hour Message Line</p><a href="tel:8005419993" style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;letter-spacing:2px">(800) 541-9993</a><p style="font-size:12px;color:rgba(255,255,255,.75);margin-top:6px;font-weight:600">Leave a message anytime — calls returned promptly</p></div>
+<div class="cg cg2" style="margin-top:0"><div class="card"><div class="ci">⚡</div><h3>Same Day</h3><p>Same-day response for most service needs in our coverage area.</p></div><div class="card"><div class="ci">🛡️</div><h3>7-Day</h3><p>Service 7 days a week — we don't leave you stranded on weekends.</p></div></div></div>
+</div></div></section>
+<section class="ctab"><h2>Need Service or New Equipment?</h2><p>Call our 24-hour message line or fill out our contact form.</p><button class="bp" onclick="go('contact')">Contact Us</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- MUSIC -->
+<div class="pg" id="pg-music">
+<div class="ph"><div class="phi"><span class="slbl">Digital Jukeboxes</span><h1>Music</h1><p>Keep customers engaged and staying longer with TouchTunes &amp; AMI jukeboxes.</p></div></div>
+<section class="sec"><div class="si">
+<div class="tc"><div><span class="badge">🎵 TouchTunes</span><h2 class="stit" style="margin-top:14px">TouchTunes Music</h2><div class="div"></div>
+<p class="sbdy">We partner with breweries, restaurants and bars to create a custom music program with full sound system installations — at no cost.</p>
+<ul class="cl" style="margin-top:16px"><li><div class="ck">✓</div>Jukeboxes earn revenue &amp; keep customers longer</li><li><div class="ck">✓</div>Phone apps increase revenue</li><li><div class="ck">✓</div>Fully licensed — ASCAP, BMI &amp; SESAC</li><li><div class="ck">✓</div>Background music &amp; TV sound included</li></ul></div>
+<div class="fiw">🎶</div></div>
+<div class="tc fl" style="margin-top:60px"><div><span class="badge">🎵 AMI Music</span><h2 class="stit" style="margin-top:14px">AMI ATOM Jukebox</h2><div class="div"></div>
+<p class="sbdy">Small in size (20"×33") but big on excitement. Clean screens and an awesome light scheme attracts customers.</p>
+<ul class="cl" style="margin-top:16px"><li><div class="ck">✓</div>Phone app with video music playback</li><li><div class="ck">✓</div>Create Ad Screens to market your specials</li><li><div class="ck">✓</div>Fully licensed — ASCAP, BMI &amp; SESAC</li><li><div class="ck">✓</div>AMI Copilot app for content control</li></ul></div>
+<div class="fiw">🎼</div></div>
+</div></section>
+<section class="ctab"><h2>Get a Free Jukebox Installation</h2><p>We own, operate, and install. You earn commissions. Zero upfront cost.</p><button class="bp" onclick="go('contact')">Request Installation</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- ATMS -->
+<div class="pg" id="pg-atms">
+<div class="ph"><div class="phi"><span class="slbl">ATM Placement &amp; Management</span><h1>ATMs</h1><p>One of the largest ATM operators in the Pacific Northwest — 1,800+ terminals strong. Our ATM business operates under the trade name DMS, Inc.</p></div></div>
+<section class="sec"><div class="si"><div class="tc">
+<div><span class="slbl">Full-Service ATM Management</span><h2 class="stit">Cash on Demand</h2><div class="div"></div>
+<p class="sbdy">State-of-the-art equipment, no upfront cost, programs tailored to your needs.</p>
+<ul class="cl" style="margin-top:16px"><li><div class="ck">✓</div>No upfront cost to your business</li><li><div class="ck">✓</div>ADA, EMV &amp; PCI compliant</li><li><div class="ck">✓</div>7-day service &amp; monitoring</li><li><div class="ck">✓</div>Commissions paid monthly</li><li><div class="ck">✓</div>Free upgrades — never pay for a new machine</li><li><div class="ck">✓</div>National placement available</li></ul></div>
+<div><div class="cg cg2" style="margin-top:0"><div class="card"><div class="ci">🏪</div><h3>Any Location</h3><p>Bars, restaurants, hotels, retail, cannabis stores, events &amp; fairs.</p></div><div class="card"><div class="ci">💰</div><h3>Cash Loading</h3><p>We fill our machine — or we fill yours. Flexible programs available.</p></div><div class="card"><div class="ci">🛒</div><h3>Buy a Machine</h3><p>We sell, program, install and train. Ready to earn from day one.</p></div><div class="card"><div class="ci">🌐</div><h3>Nationwide</h3><p>We service ATMs in any state — not just the Pacific Northwest.</p></div></div>
+<div style="background:var(--nv);border-radius:14px;padding:22px;margin-top:18px;text-align:center;border-top:4px solid var(--gb)"><p style="font-size:11px;font-weight:700;color:var(--gl);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Free Quote</p><a href="tel:8005419993" style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;display:block">(800) 541-9993</a><a href="mailto:info@dmswa.com" style="font-size:13px;color:var(--gl);font-weight:600">info@dmswa.com</a></div></div>
+</div></div></section>
+<section class="ctab"><h2>Place an ATM in Your Business Today</h2><p>No cost, no hassle. We handle everything — you earn monthly commissions.</p><button class="bp" onclick="go('contact')">Get a Free Quote</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- GAMES -->
+<div class="pg" id="pg-games">
+<div class="ph"><div class="phi"><span class="slbl">Amusement Games</span><h1>Games</h1><p>Promotions and tournaments that keep your customers coming back.</p></div></div>
+<section class="sec"><div class="si">
+<div style="text-align:center;max-width:580px;margin:0 auto 36px"><span class="slbl" style="text-align:center">Free Placement Program</span><h2 class="stit" style="margin:0 auto">We'll Find the Right Mix</h2><div class="div" style="margin:14px auto 0"></div></div>
+<div class="cg cg3"><div class="card"><div class="ci">⛳</div><h3>Golden Tee Live</h3><p>PGA Tour Golden Tee with WWGT promotions. One of the most profitable games in the industry.</p></div><div class="card"><div class="ci">🎳</div><h3>Pool Tables</h3><p>Coin-operated pool tables — keeps customers playing and ordering longer.</p></div><div class="card"><div class="ci">🦆</div><h3>Crane Machines</h3><p>Win-every-time ducks and toys plus chance games with big cash boxes.</p></div><div class="card"><div class="ci">🎯</div><h3>Dart Boards</h3><p>Soft-tip dart boards with internet-connected league play built in.</p></div><div class="card"><div class="ci">🕹️</div><h3>Pinball</h3><p>Classic and modern pinball machines that attract a loyal repeat customer base.</p></div><div class="card"><div class="ci">📋</div><h3>Custom Mix</h3><p>Not sure what fits? Call us — we'll assess your space and recommend the right combo.</p></div></div>
+</div></section>
+<section class="ctab"><h2>Free Equipment. Revenue Sharing.</h2><p>We deliver, install, and service. You split the revenue. No risk.</p><button class="bp" onclick="go('contact')">Talk to Us</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- DARTS -->
+<div class="pg" id="pg-darts">
+<div class="ph"><div class="phi"><span class="slbl">Soft-Tip Dart Leagues</span><h1>Darts</h1><p>Local, regional, and national leagues — all from your favorite bar.</p></div></div>
+<section class="sec"><div class="si"><div class="tc">
+<div><span class="slbl">Western WA Dart League</span><h2 class="stit">Leagues &amp; Tournaments</h2><div class="div"></div>
+<p class="sbdy">Internet-connected boards track everything automatically. Local, regional, and national leagues all year long.</p>
+<ul class="cl" style="margin-top:16px"><li><div class="ck">✓</div>Local and in-house leagues</li><li><div class="ck">✓</div>Regional leagues with tournaments</li><li><div class="ck">✓</div>National — Tournament of Champions, Kansas City</li><li><div class="ck">✓</div>Automated stats &amp; results posted instantly</li><li><div class="ck">✓</div>Payouts to winners at end of season</li></ul>
+<a class="bp" href="https://westernwadartleague.com/" target="_blank" style="margin-top:24px;display:inline-block">Western WA Dart League →</a></div>
+<div><div class="card" style="margin-bottom:16px"><div class="ci">🎯</div><h3>DARTSLIVE</h3><p>Play against friends down the street or around the world in real time. Track your rating with the Dartslive player card.</p></div>
+<div class="card"><div class="ci">🌐</div><h3>PPD — Galaxy 3 Boards</h3><p>Remote leagues and daily tournaments in all locations. Play in 16-team flights over an internet connection.</p><a href="https://www.dartstoc.com/" target="_blank" style="display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--nv)">Darts TOC →</a></div></div>
+</div></div></section>
+<section class="ctab"><h2>Add Darts to Your Venue</h2><p>Free boards, leagues built in, players who come back every week.</p><button class="bp" onclick="go('contact')">Get Started</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- TRIVIA -->
+<div class="pg" id="pg-trivia">
+<div class="ph"><div class="phi"><span class="slbl">AMI Trivia / Tap TV</span><h1>Trivia</h1><p>Trivia brings in customers and keeps them longer — no host required.</p></div></div>
+<section class="sec"><div class="si"><div class="tc">
+<div><span class="badge">🧠 Also known as Tap TV</span><h2 class="stit" style="margin-top:14px">On-Screen Trivia, 24/7</h2><div class="div"></div>
+<p class="sbdy">On-screen trivia runs 24/7. Patrons play in real time using their phone. Local and national scoring every round.</p>
+<ul class="cl" style="margin-top:16px"><li><div class="ck">✓</div>No host needed — the game runs itself</li><li><div class="ck">✓</div>Players use their phone, scores on screen</li><li><div class="ck">✓</div>Local and national scoring every round</li><li><div class="ck">✓</div>Tuesday night network contests vs other NW locations</li></ul></div>
+<div><div class="card" style="margin-bottom:16px"><div class="ci">📺</div><h3>Advertise on Screen</h3><p>Create ads with 1,800+ templates. Promote events, food specials, and drink promos to every player in the room.</p></div>
+<div style="background:var(--nv);border-radius:14px;padding:22px;color:#fff"><h4 style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--gl);margin-bottom:7px">Join the NW Group</h4><p style="font-size:13px;color:rgba(255,255,255,.58)">Tap TV Northwest Group on Facebook for results, contests and updates.</p><a href="https://www.facebook.com/groups/967581336587019/" target="_blank" style="display:inline-block;margin-top:9px;font-size:13px;color:var(--gl);font-weight:600">Facebook Group →</a></div></div>
+</div></div></section>
+<section class="ctab"><h2>Add Trivia to Your Venue</h2><p>No host. No hassle. Customers who stay longer and come back every Tuesday.</p><button class="bp" onclick="go('contact')">Learn More</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- REVIEWS -->
+<div class="pg" id="pg-reviews">
+<div class="ph"><div class="phi"><span class="slbl">Customer Reviews</span><h1>Testimonials</h1><p>Hear from bar owners, brewers, and restaurateurs who rely on DMS.</p></div></div>
+<section class="sec"><div class="si"><div class="tg">
+<div class="tc2"><p>DMS offered a new ATM at no cost and still let me use my own cash to load it. I now make more on commission than my previous vendor — in the past I paid $5,000 out of pocket. They showed up within 3 hours when I called. Fantastic value.</p><div class="ta">Taek Kim</div><div class="tb">Meeker Street Bar &amp; Grill</div></div>
+<div class="tc2"><p>Having the TouchTunes Barrel Edition at Black Fleet Brewing has been nothing short of awesome. It empowers our customers to play their favorite music while removing the stress of licensed entertainment. Highly recommend.</p><div class="ta">Kyle Maxwell, Director of Brewing Ops</div><div class="tb">Black Fleet Brewing, Tacoma, WA</div></div>
+<div class="tc2"><p>I have used multiple vendors and by far DMS has proven they are the peak of professional services. They respond with urgency, the equipment is premium, and ATM maintenance is spot on. I already know who I have behind me. DMS!</p><div class="ta">Theo Chung, Owner</div><div class="tb">Ricky J's, Frederickson &amp; Coco Joe's, Algona, WA</div></div>
+</div></div></section>
+<section class="ctab"><h2>Join Hundreds of Happy Venues</h2><p>Let's find the right equipment mix for your space — no cost, no risk.</p><button class="bp" onclick="go('contact')">Get a Free Quote</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- ABOUT -->
+<div class="pg" id="pg-about">
+<div class="ph"><div class="phi"><span class="slbl">Est. 1980 · Seattle, WA</span><h1>About DMS</h1><p>A local, family-owned company serving Washington venues for over 40 years.</p></div></div>
+<section class="sec"><div class="si"><div class="tc">
+<div><span class="slbl">Our Story</span><h2 class="stit">Digital Music Systems — Known Across the Industry</h2><div class="div"></div>
+<p class="sbdy">We started as a local, family-owned video game company in 1980. Throughout the industry, we're known as Digital Music Systems — and we've expanded far beyond music. DMS, Inc. is the trade name we use for our ATM business.</p>
+<div style="position:relative;padding-left:28px;margin-top:28px"><div style="position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--bd)"></div>
+<div style="position:relative;margin-bottom:22px"><div style="position:absolute;left:-25px;top:5px;width:10px;height:10px;background:var(--gb);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 3px rgba(78,137,53,.28)"></div><h4 style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--nv);letter-spacing:1px;margin-bottom:3px">1980 — Founded</h4><p style="font-size:13px;color:var(--gr)">Local, family-owned video game company in Seattle, WA.</p></div>
+<div style="position:relative;margin-bottom:22px"><div style="position:absolute;left:-25px;top:5px;width:10px;height:10px;background:var(--gb);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 3px rgba(78,137,53,.28)"></div><h4 style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--nv);letter-spacing:1px;margin-bottom:3px">Music Era</h4><p style="font-size:13px;color:var(--gr)">Expanded into digital music — became Digital Music Systems.</p></div>
+<div style="position:relative;margin-bottom:22px"><div style="position:absolute;left:-25px;top:5px;width:10px;height:10px;background:var(--gb);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 3px rgba(78,137,53,.28)"></div><h4 style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--nv);letter-spacing:1px;margin-bottom:3px">ATMs &amp; Amusements</h4><p style="font-size:13px;color:var(--gr)">Grew to 1,800+ ATM terminals across the Pacific Northwest.</p></div>
+<div style="position:relative"><div style="position:absolute;left:-25px;top:5px;width:10px;height:10px;background:var(--gb);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 3px rgba(78,137,53,.28)"></div><h4 style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--nv);letter-spacing:1px;margin-bottom:3px">Today — Digital Music Systems</h4><p style="font-size:13px;color:var(--gr)">Jukeboxes, ATMs, games, darts, and trivia — with DMS, Inc. as our ATM trade name.</p></div>
+</div></div>
+<div><div class="cg cg2" style="margin-top:0"><div class="card"><div class="ci">🏆</div><h3>40+ Years</h3><p>Four decades serving Washington and Oregon venues.</p></div><div class="card"><div class="ci">🏧</div><h3>1,800+ ATMs</h3><p>One of the largest ATM operators in the Pacific Northwest.</p></div><div class="card"><div class="ci">🌲</div><h3>Pacific NW</h3><p>Western WA, Western OR, Chelan, Yakima &amp; Tri-Cities.</p></div><div class="card"><div class="ci">🤝</div><h3>Family Owned</h3><p>Still a local, independent company — not a national chain.</p></div></div></div>
+</div></div></section>
+<section class="ctab"><h2>Work With a Company That Cares</h2><p>40+ years means we know what works for venues like yours.</p><button class="bp" onclick="go('contact')">Get in Touch</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+<!-- FAQ -->
+<div class="pg" id="pg-faq">
+<div class="ph"><div class="phi"><span class="slbl">Got Questions?</span><h1>FAQ</h1><p>Everything you need to know about our equipment, services, and programs.</p></div></div>
+<section class="sec"><div class="si"><div style="max-width:760px;margin:0 auto">
+<div class="fg"><div class="fgt">🔧 General</div>
+<div class="fi"><button class="fq" onclick="faq(this)">What areas do you service?<span class="ar">▾</span></button><div class="fa"><p>Western Washington, Western Oregon, Chelan County, Yakima and Tri-Cities. ATMs serviced nationally.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">Who maintains the equipment?<span class="ar">▾</span></button><div class="fa"><p>DMS employs experienced technicians. Call us with service needs and we come to your location.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">How long does a repair take?<span class="ar">▾</span></button><div class="fa"><p>Usually we are at your location within 24 hours.</p></div></div>
+</div>
+<div class="fg"><div class="fgt">🎵 Music</div>
+<div class="fi"><button class="fq" onclick="faq(this)">What is a downloading jukebox?<span class="ar">▾</span></button><div class="fa"><p>A TouchTunes or AMI digital jukebox uses a hard drive instead of CDs. Customers select music on a touchscreen or phone app. Typically wall-mounted to save space.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">How much does installation cost?<span class="ar">▾</span></button><div class="fa"><p>We own and operate the complete sound system — installed in your business at no cost to you.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">Is the music licensed?<span class="ar">▾</span></button><div class="fa"><p>Yes. We handle ASCAP, BMI, and SESAC — you don't pay the annual fees.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">Do we control the music?<span class="ar">▾</span></button><div class="fa"><p>Yes — screen out genres, schedule music by time of day, and create themed promotions.</p></div></div>
+</div>
+<div class="fg"><div class="fgt">🎮 Games &amp; Darts</div>
+<div class="fi"><button class="fq" onclick="faq(this)">What kind of games do you have?<span class="ar">▾</span></button><div class="fa"><p>Crane games, video games, dart boards, pool tables, pinball machines, and on-screen trivia.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">How much do games cost to place?<span class="ar">▾</span></button><div class="fa"><p>We own and operate the equipment — placement is free and delivered to your location.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">Do you have dart leagues?<span class="ar">▾</span></button><div class="fa"><p>Yes — Western Washington Dart Leagues runs local, regional, and national leagues all year long.</p></div></div>
+</div>
+<div class="fg"><div class="fgt">🏧 ATMs</div>
+<div class="fi"><button class="fq" onclick="faq(this)">Where do you operate ATMs?<span class="ar">▾</span></button><div class="fa"><p>Bars, restaurants, hotels, retail, cannabis stores, tattoo shops, events, fairs — anywhere people need cash. Nationally for ATMs.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">Can I buy a machine from you?<span class="ar">▾</span></button><div class="fa"><p>Absolutely. We sell, program, install, and train you. Ready to earn from day one.</p></div></div>
+<div class="fi"><button class="fq" onclick="faq(this)">What if I don't want to fill the machine myself?<span class="ar">▾</span></button><div class="fa"><p>We have a program where we fill our machine, or we fill yours. Call us to find the right fit.</p></div></div>
+</div>
+</div></div></section>
+<section class="ctab"><h2>Still Have Questions?</h2><p>Our team is happy to answer anything.</p><button class="bp" onclick="go('contact')">Contact Us</button><a class="bo" href="tel:8005419993">📞 (800) 541-9993</a></section>
+</div>
+
+<!-- CONTACT -->
+<div class="pg" id="pg-contact">
+<div class="ph"><div class="phi"><span class="slbl">Get In Touch</span><h1>Contact</h1><p>Ready to add equipment or need service? Reach out and we'll respond fast.</p></div></div>
+<section class="sec"><div class="si"><div class="cgrid">
+<div class="cic"><h3>Contact Digital Music Systems</h3>
+<div class="cr"><div class="cico">📞</div><div><strong>Phone / 24-Hr Message Line</strong><a href="tel:8005419993">(800) 541-9993</a></div></div>
+<div class="cr"><div class="cico">✉️</div><div><strong>Email</strong><a href="mailto:info@dmswa.com">info@dmswa.com</a></div></div>
+<div class="cr"><div class="cico">📍</div><div><strong>Service Area</strong><p>Western WA, Western OR, Chelan County, Yakima, Tri-Cities</p></div></div>
+<div class="cr"><div class="cico">🕐</div><div><strong>Hours</strong><p>Leave a message anytime, day or night — calls are returned promptly during business hours</p></div></div>
+<div class="cr"><div class="cico">📘</div><div><strong>Facebook</strong><a href="https://www.facebook.com/digitalmusicsystems/" target="_blank">@digitalmusicsystems</a></div></div>
+</div>
+<div class="cfw">
+<h3 style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--nv);margin-bottom:20px">Send Us a Message</h3>
+<div class="fr"><div class="fg2"><label>First Name</label><input type="text" placeholder="John" id="cf1"/></div><div class="fg2"><label>Last Name</label><input type="text" placeholder="Smith" id="cf2"/></div></div>
+<div class="fg2"><label>Business Name</label><input type="text" placeholder="My Bar &amp; Grill" id="cf3"/></div>
+<div class="fg2"><label>Phone</label><input type="tel" placeholder="(206) 555-0100" id="cf4"/></div>
+<div class="fg2" style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1.5px solid var(--bd);border-radius:9px;padding:12px 13px"><input type="checkbox" id="cfsms" style="width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--nv)"/><label for="cfsms" style="margin:0;font-weight:400;font-size:12px;color:var(--gr);line-height:1.55;cursor:pointer">I agree to receive text messages from Digital Music Systems at the phone number provided. Message frequency varies, message &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See our <a onclick="event.preventDefault();go('privacy')" style="color:var(--nv);font-weight:600;cursor:pointer;text-decoration:underline">Privacy Policy</a>.</label></div>
+<div class="fg2"><label>Email</label><input type="email" placeholder="you@business.com" id="cf5"/></div>
+<div class="fg2"><label>I'm Interested In</label><select id="cf6"><option>Jukeboxes / Music</option><option>ATM Placement</option><option>Games &amp; Amusements</option><option>Dart Leagues</option><option>Trivia / Tap TV</option><option>Multiple Services</option><option>Service / Repair</option></select></div>
+<div class="fg2"><label>Message</label><textarea placeholder="Tell us about your venue and what you need..." id="cf7"></textarea></div>
+<button class="fsub" id="cfbtn" onclick="submitForm(this)">Send Message →</button>
+<div id="cferr" style="display:none;margin-top:14px;background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.22);border-radius:9px;padding:14px;font-size:13px;color:#c0392b;text-align:center">⚠️ Sorry, your message could not be sent. Please call (800) 541-9993 or email info@dmswa.com.</div>
+<div id="cfsuc" style="display:none;margin-top:14px;background:rgba(30,180,100,.1);border:1px solid rgba(30,180,100,.22);border-radius:9px;padding:14px;font-size:13px;color:#1db87a;text-align:center">✅ Message sent! We'll be in touch. Or call (800) 541-9993 for immediate help.</div>
+</div>
+</div></div></section>
+</div>
+
+<!-- PRIVACY POLICY -->
+<div class="pg" id="pg-privacy">
+<div class="ph"><div class="phi"><span class="slbl">Your Information</span><h1>Privacy Policy</h1><p>How Digital Music Systems collects, uses, and protects your information.</p></div></div>
+<section class="sec"><div class="si"><div style="max-width:760px;margin:0 auto">
+<p style="font-size:13px;color:var(--gr);margin-bottom:28px">Last updated: July 2026</p>
+
+<h2 class="stit" style="font-size:24px">Who We Are</h2>
+<p class="sbdy" style="max-width:none;margin-bottom:28px">Digital Music Systems ("we," "us," "our") provides jukeboxes, ATMs, amusement games, dart leagues, and trivia services throughout Washington and Oregon. DMS, Inc. is the trade name we use for our ATM business. This Privacy Policy applies to information collected through our website, dmswa.com, and through communications with us.</p>
+
+<h2 class="stit" style="font-size:24px">Information We Collect</h2>
+<p class="sbdy" style="max-width:none;margin-bottom:28px">When you fill out our contact form, we collect the information you provide: your name, business name, phone number, email address, and the details of your message. We also record whether you checked the text messaging consent box, along with the date and time of your submission. We use this information solely to respond to your inquiry, provide our services, and communicate with you about your account or equipment.</p>
+
+<h2 class="stit" style="font-size:24px">How We Use Your Information</h2>
+<p class="sbdy" style="max-width:none;margin-bottom:28px">We use the information you provide to respond to inquiries, schedule service and installations, process quotes, and keep you informed about services you've requested. We do not sell your personal information. We do not share your personal information with third parties for their marketing purposes.</p>
+
+<h2 class="stit" style="font-size:24px">Text (SMS) Messaging Program</h2>
+<p class="sbdy" style="max-width:none;margin-bottom:14px">Digital Music Systems offers text messaging to communicate with customers about inquiries, quotes, service appointments, and account-related updates. By checking the text messaging consent box on our contact form and providing your phone number, you agree to receive text messages from Digital Music Systems at the number provided.</p>
+<ul class="cl" style="margin-bottom:14px">
+<li><div class="ck">✓</div>Consent to receive text messages is not a condition of purchasing any goods or services.</li>
+<li><div class="ck">✓</div>Message frequency varies based on your interaction with us.</li>
+<li><div class="ck">✓</div>Message and data rates may apply depending on your mobile carrier and plan.</li>
+<li><div class="ck">✓</div>Reply <strong>&nbsp;STOP&nbsp;</strong> at any time to opt out of receiving text messages.</li>
+<li><div class="ck">✓</div>Reply <strong>&nbsp;HELP&nbsp;</strong> for assistance, or contact us at <a href="mailto:info@dmswa.com" style="color:var(--nv);font-weight:600">info@dmswa.com</a> or (800) 541-9993.</li>
+<li><div class="ck">✓</div>Your phone number and text messaging opt-in data will not be shared with third parties or affiliates for marketing purposes.</li>
+</ul>
+<div style="background:var(--of);border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:28px"><p style="font-size:14px;color:var(--tx);line-height:1.7"><strong>Text Message Terms:</strong> By opting in to receive text messages from Digital Music Systems, you agree to receive informational and service-related messages at the phone number provided. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help.</p></div>
+
+<h2 class="stit" style="font-size:24px">Contact Us</h2>
+<p class="sbdy" style="max-width:none">If you have questions about this Privacy Policy or how your information is handled, contact us at <a href="mailto:info@dmswa.com" style="color:var(--nv);font-weight:600">info@dmswa.com</a> or call (800) 541-9993.</p>
+</div></div></section>
+</div>
+
+<!-- STAFF PORTAL -->
+<div class="pg" id="pg-portal">
+<div class="pw">
+<div class="plw" id="plw">
+<div class="plc">
+<div class="pll"><div class="dlogo plm" role="img" aria-label="Digital Music Systems (DMS)"></div><h2>Staff Portal</h2><p class="sub">Digital Music Systems Employee Access</p></div>
+<div class="perr" id="perr">Staff sign-in is not active yet. Please contact your administrator for access.</div>
+<div class="pf"><label>Email Address</label><input type="email" id="lem" placeholder="you@dmswa.com" onkeydown="if(event.key==='Enter')login()"/></div>
+<div class="pf"><label>Password</label><input type="password" id="lpw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/></div>
+<button class="plb" onclick="login()">Sign In →</button>
+</div>
+</div>
+<div class="pdash" id="pdash">
+<div class="pdh"><div class="pdhi">
+<div class="pdb2"><div class="dlogo pbm" role="img" aria-label="Digital Music Systems (DMS)"></div><div><div class="pbn">Staff Portal</div><div class="pbs">Internal Use Only</div></div></div>
+<div class="pdacts"><button class="abtn" onclick="go('home')">← Back to Website</button><span class="pdun" id="pdun"></span><button class="gbtn" onclick="logout()">Sign Out</button></div>
+</div></div>
+<div class="pdbody">
+<div class="ptabs"><button class="ptab on" onclick="ptab('watch')">▶ Watch Videos</button><button class="ptab" onclick="ptab('upload')">⬆ Upload</button></div>
+<div class="ppan on" id="pp-watch">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+<div><h2 style="font-size:19px;font-weight:600;color:#fff;margin-bottom:2px">Video Library</h2><p style="font-size:12px;color:rgba(255,255,255,.32)" id="vcnt">0 videos</p></div>
+<input type="text" placeholder="🔍 Search..." id="vsrch" oninput="renderV()" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:9px;padding:8px 13px;color:#fff;font-size:13px;width:200px;outline:none;font-family:inherit"/>
+</div>
+<div class="vg" id="vg"><div class="emp"><span>📹</span><p>No videos yet. Upload the first one!</p></div></div>
+</div>
+<div class="ppan" id="pp-upload">
+<h2 style="font-size:19px;font-weight:600;color:#fff;margin-bottom:3px">Upload a Video</h2>
+<p style="font-size:13px;color:rgba(255,255,255,.32);margin-bottom:20px">MP4, MOV, AVI, WebM</p>
+<div style="margin-bottom:12px"><label style="font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.38);display:block;margin-bottom:6px">Video Title</label><input type="text" id="utit" placeholder="e.g. Q3 Training, ATM Install Demo..." style="width:100%;max-width:500px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.08);border-radius:9px;padding:11px 14px;color:#fff;font-size:13px;font-family:inherit;outline:none"/></div>
+<div class="upz" id="upz"><input type="file" accept="video/*" id="ufi" onchange="upfile(this)"/><div style="font-size:40px;margin-bottom:10px">🎬</div><h3 style="font-size:16px;color:#fff;margin-bottom:5px">Drop your video here</h3><p style="font-size:13px;color:rgba(255,255,255,.32)">or click to browse files</p></div>
+<div class="upp" id="upp"><div style="display:flex;align-items:center;gap:10px;margin-bottom:7px"><span style="font-size:24px">🎞️</span><div><div style="font-size:13px;color:#fff;font-weight:500" id="upn">—</div><div style="font-size:11px;color:rgba(255,255,255,.32)" id="ups">—</div></div></div><div class="ptrack"><div class="pfill" id="pfl"></div></div><p style="font-size:12px;color:rgba(255,255,255,.32);margin-top:6px" id="plbl">Uploading...</p></div>
+<div class="uok" id="uok"><span style="font-size:20px">✅</span>Video uploaded! It's now in the library.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="fi2">
+<div class="fb"><div class="dlogo" role="img" aria-label="Digital Music Systems (DMS)" style="width:170px;height:46px"></div><p>Jukeboxes, ATMs, games, darts, and trivia throughout Washington and Oregon. Est. 1980 in Seattle, WA. DMS, Inc. is the trade name for our ATM business.</p><p style="margin-top:9px"><a href="tel:8005419993" style="color:var(--gl);font-weight:700">(800) 541-9993</a></p></div>
+<div class="fc"><h4>Services</h4><a onclick="go('music')">Music</a><a onclick="go('atms')">ATMs</a><a onclick="go('games')">Games</a><a onclick="go('darts')">Darts</a><a onclick="go('trivia')">Trivia</a></div>
+<div class="fc"><h4>Company</h4><a onclick="go('about')">About</a><a onclick="go('service')">Service</a><a onclick="go('happenings')">Happenings</a><a onclick="go('reviews')">Testimonials</a><a onclick="go('faq')">FAQ</a><a onclick="go('privacy')">Privacy Policy</a></div>
+<div class="fc"><h4>Contact</h4><a href="tel:8005419993">(800) 541-9993</a><a href="mailto:info@dmswa.com">info@dmswa.com</a><a onclick="go('contact')">Contact Form</a><a onclick="go('portal')" style="color:rgba(124,186,94,.62)">🔒 Staff Portal</a></div>
+</div>
+<div class="fbot"><div class="fboti"><span>© 2026 Digital Music Systems · DMS, Inc. All rights reserved.</span><span>Serving WA &amp; OR since 1980</span></div></div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeM()">
+<div class="minn"><div class="mhdr"><span id="mtit">—</span><button class="mcls" onclick="closeM()">✕</button></div>
+<div class="mbdy"><div class="mpl"><video id="mvid" controls></video></div><div class="mmet" id="mmet"></div></div></div>
+</div>
+
+<script>
+/* ============================================================
+   FORM SENDING — FORMSPREE
+   Form is wired to Lucas's Formspree account (form ID mlgqkqoa).
+   Submissions forward to the inbox configured in the Formspree
+   dashboard. Includes SMS opt-in status + date/time on every send.
+
+   ============================================================ */
+var FORMSPREE_ENDPOINT='https://formspree.io/f/mlgqkqoa';
+
+var cu=null,vids=[];
+
+/* ---------- HAPPENINGS DATA ----------
+   NOTE: All venue names, dates, and details below must be
+   verified by Ashley before go-live. */
+var HAPPENINGS=[
+{cat:'event',mon:'OCT',day:'17',venue:'Western WA Golden Tee Pro Tour',city:'Multiple Locations',em:'⛳',title:'Golden Tee Pro Tour — Oct 17–19',desc:'Three days of PGA Tour Golden Tee competition across our network locations. Open qualifying — see your local DMS venue for details.'},
+{cat:'event',mon:'AUG',day:'21',venue:'Auburn Eagles Club',city:'Auburn, WA',em:'🎯',title:'Dart League Night',desc:'Western WA Dart League play at the Auburn Eagles Club. New players welcome — boards are internet-connected with automated stats.'},
+{cat:'event',mon:'AUG',day:'07',venue:'The Cue Room',city:'Puyallup, WA',em:'🎱',title:'Pool Tournament',desc:'Coin-op pool tournament night at The Cue Room. Sign-ups at the venue.'},
+{cat:'install',mon:'JUL',day:'22',venue:'Harbor Lights Tavern',city:'Tacoma, WA',em:'🎵',title:'New TouchTunes Install',desc:'Fresh TouchTunes jukebox and full sound system installed at Harbor Lights Tavern. Stop in and queue something up.'},
+{cat:'install',mon:'JUL',day:'15',venue:'Rainier Bowl & Grill',city:'Seattle, WA',em:'🕹️',title:'Games Package Install',desc:'New amusement games on the floor at Rainier Bowl & Grill — Golden Tee, darts, and more.'},
+{cat:'install',mon:'JUL',day:'09',venue:'Kent Corner Market',city:'Kent, WA',em:'🏧',title:'New ATM Placement',desc:'A new DMS, Inc. ATM is live at Kent Corner Market — EMV and ADA compliant, serviced 7 days.'}
+];
+
+function hpEsc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function hpRender(filter){
+  var g=document.getElementById('hpgrid');if(!g)return;
+  var items=HAPPENINGS.filter(function(h){return filter==='all'||h.cat===filter});
+  if(!items.length){g.innerHTML='<div class="hpempty">Nothing here yet — check back soon or follow us on Facebook.</div>';return}
+  g.innerHTML=items.map(function(h){
+    return '<article class="hpc" data-cat="'+h.cat+'">'
+    +'<div class="hpmed"><span class="hptag">'+(h.cat==='event'?'Event':'New Install')+'</span>'
+    +'<div class="hpph"><span class="em">'+h.em+'</span><span class="lb">'+hpEsc(h.venue)+'</span></div></div>'
+    +'<div class="hpstub"><div class="hpdate"><b>'+h.day+'</b><span>'+h.mon+'</span></div>'
+    +'<div class="hpwhere"><strong>'+hpEsc(h.venue)+'</strong><span>'+hpEsc(h.city)+'</span></div></div>'
+    +'<div class="hpbody"><h3>'+hpEsc(h.title)+'</h3><p>'+hpEsc(h.desc)+'</p>'
+    +'<a class="hplink" onclick="go(\'contact\')">Ask about this →</a></div></article>';
+  }).join('');
+  var cards=g.querySelectorAll('.hpc');
+  cards.forEach(function(c,i){setTimeout(function(){c.classList.add('in')},60*i)});
+}
+function hpFilter(btn){
+  document.querySelectorAll('.hpchip').forEach(function(c){c.classList.remove('on')});
+  btn.classList.add('on');
+  hpRender(btn.dataset.filter);
+}
+
+/* ---------- PAGE ROUTER ---------- */
+function go(id){
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on')});
+  var pg=document.getElementById('pg-'+id);if(pg)pg.classList.add('on');
+  document.querySelectorAll('.nl a').forEach(function(a){a.classList.remove('on')});
+  var na=document.getElementById('n-'+id);if(na)na.classList.add('on');
+  window.scrollTo(0,0);
+}
+
+/* ---------- FAQ ---------- */
+function faq(btn){
+  var open=btn.classList.contains('op');
+  btn.classList.toggle('op',!open);
+  btn.nextElementSibling.classList.toggle('op',!open);
+}
+
+/* ---------- CONTACT FORM (Formspree) ---------- */
+function submitForm(btn){
+  var n=document.getElementById('cf1').value.trim();
+  var e=document.getElementById('cf5').value.trim();
+  var suc=document.getElementById('cfsuc'),err=document.getElementById('cferr');
+  suc.style.display='none';err.style.display='none';
+  if(!n||!e){alert('Please fill in your first name and email.');return}
+  var now=new Date();
+  var payload={
+    first_name:n,
+    last_name:document.getElementById('cf2').value.trim(),
+    business_name:document.getElementById('cf3').value.trim(),
+    phone:document.getElementById('cf4').value.trim(),
+    email:e,
+    interested_in:document.getElementById('cf6').value,
+    message:document.getElementById('cf7').value.trim(),
+    sms_opt_in:document.getElementById('cfsms').checked?'YES — customer consented to receive text messages':'NO — customer did not opt in',
+    sms_opt_in_recorded_at:now.toISOString()+' (UTC) / '+now.toLocaleString('en-US',{timeZone:'America/Los_Angeles'})+' (Pacific)',
+    _subject:'New dmswa.com inquiry from '+n
+  };
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  fetch(FORMSPREE_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload)
+  }).then(function(r){
+    if(r.ok){
+      suc.style.display='block';
+      ['cf1','cf2','cf3','cf4','cf5','cf7'].forEach(function(id){document.getElementById(id).value=''});
+      document.getElementById('cfsms').checked=false;
+    }else{err.style.display='block';}
+  }).catch(function(){err.style.display='block';})
+  .then(function(){if(btn){btn.disabled=false;btn.textContent='Send Message →';}});
+}
+
+/* ---------- STAFF PORTAL ----------
+   All hard-coded credentials have been removed from this site.
+   The sign-in below is an inactive gate until a real access
+   solution (private video links or Cloudflare Access) is chosen. */
+function login(){
+  document.getElementById('perr').classList.add('on');
+}
+function logout(){
+  cu=null;
+  document.getElementById('pdash').style.display='none';
+  document.getElementById('plw').style.display='flex';
+  document.getElementById('perr').classList.remove('on');
+  document.getElementById('lem').value='';document.getElementById('lpw').value='';
+}
+function ptab(t){
+  document.querySelectorAll('.ptab').forEach(function(b){b.classList.remove('on')});
+  document.querySelectorAll('.ppan').forEach(function(p){p.classList.remove('on')});
+  event.target.classList.add('on');
+  document.getElementById('pp-'+t).classList.add('on');
+}
+function fmtS(b){
+  if(b<1024)return b+' B';
+  if(b<1048576)return (b/1024).toFixed(1)+' KB';
+  if(b<1073741824)return (b/1048576).toFixed(1)+' MB';
+  return (b/1073741824).toFixed(2)+' GB';
+}
+function renderV(){
+  var g=document.getElementById('vg');if(!g)return;
+  var q=(document.getElementById('vsrch').value||'').toLowerCase();
+  var list=vids.filter(function(v){return v.title.toLowerCase().indexOf(q)>-1});
+  document.getElementById('vcnt').textContent=vids.length+(vids.length===1?' video':' videos');
+  if(!list.length){g.innerHTML='<div class="emp"><span>📹</span><p>'+(vids.length?'No videos match your search.':'No videos yet. Upload the first one!')+'</p></div>';return}
+  g.innerHTML=list.map(function(v,i){
+    return '<div class="vc" onclick="openV('+vids.indexOf(v)+')"><div class="vth">🎬<div class="vtho"><div class="vpc">▶</div></div></div>'
+    +'<div class="vinfo"><div class="vtit">'+hpEsc(v.title)+'</div><div class="vmet"><span>'+fmtS(v.size)+'</span><span>'+v.date+'</span></div></div></div>';
+  }).join('');
+}
+function openV(i){
+  var v=vids[i];if(!v)return;
+  document.getElementById('mtit').textContent=v.title;
+  document.getElementById('mvid').src=v.url;
+  document.getElementById('mmet').textContent=fmtS(v.size)+' · Uploaded '+v.date;
+  document.getElementById('modal').classList.add('on');
+}
+function closeM(){
+  document.getElementById('modal').classList.remove('on');
+  var mv=document.getElementById('mvid');mv.pause();mv.src='';
+}
+function upfile(inp){
+  var f=inp.files&&inp.files[0];if(!f)return;
+  var title=document.getElementById('utit').value.trim()||f.name.replace(/\.[^.]+$/,'');
+  var upp=document.getElementById('upp'),pfl=document.getElementById('pfl'),uok=document.getElementById('uok');
+  document.getElementById('upn').textContent=f.name;
+  document.getElementById('ups').textContent=fmtS(f.size);
+  upp.style.display='block';uok.style.display='none';pfl.style.width='0%';
+  var p=0;
+  var iv=setInterval(function(){
+    p+=Math.random()*22;
+    if(p>=100){p=100;clearInterval(iv);
+      setTimeout(function(){
+        upp.style.display='none';uok.style.display='flex';
+        vids.unshift({title:title,size:f.size,date:new Date().toLocaleDateString(),url:URL.createObjectURL(f)});
+        document.getElementById('utit').value='';inp.value='';
+        renderV();
+        setTimeout(function(){uok.style.display='none'},3200);
+      },350);
+    }
+    pfl.style.width=Math.min(p,100)+'%';
+    document.getElementById('plbl').textContent=p<100?'Uploading... '+Math.floor(Math.min(p,100))+'%':'Processing...';
+  },160);
+}
+(function(){
+  var z=document.getElementById('upz');if(!z)return;
+  ['dragenter','dragover'].forEach(function(ev){z.addEventListener(ev,function(e){e.preventDefault();z.classList.add('ov')})});
+  ['dragleave','drop'].forEach(function(ev){z.addEventListener(ev,function(e){e.preventDefault();z.classList.remove('ov')})});
+  z.addEventListener('drop',function(e){
+    var fi=document.getElementById('ufi');
+    if(e.dataTransfer.files.length){fi.files=e.dataTransfer.files;upfile(fi)}
+  });
+})();
+
+hpRender('all');
+</script>
+</body>
+</html>
