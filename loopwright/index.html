@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Loopwright — AI automation, built and run for you</title>
+<meta name="description" content="Loopwright builds and runs AI automations for small teams. We find the repetitive work, wire up AI agents to handle it, and keep them running. Join the waitlist."/>
+<meta property="og:title" content="Loopwright — AI automation, built and run for you"/>
+<meta property="og:description" content="We find the repetitive work, build AI workflows to handle it, and keep them running. Join the founding waitlist."/>
+<meta property="og:type" content="website"/>
+<meta name="theme-color" content="#f4f1ea"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23161513'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23ff5b1f' stroke-width='3.5' stroke-dasharray='38 12'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   WAITLIST CONFIG
+   1. Create a free form at https://formspree.io (New Form →
+      name it "Loopwright waitlist").
+   2. Paste its endpoint below, replacing YOUR_FORM_ID.
+   Every signup then lands in the Formspree dashboard (exportable
+   to CSV) and is emailed to the address on that account.
+   Config lives in the <script> at the bottom of this file.
+   ============================================================ */
+:root{
+  --bg:#f4f1ea; --bg2:#ebe6db; --card:#fffdf8; --ink:#161513; --ink2:#4a463f;
+  --mute:#7d776c; --line:#d9d2c3; --acc:#ff5b1f; --acc-ink:#fff; --ok:#1f8a4c;
+  --r:16px; --maxw:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121110; --bg2:#1a1917; --card:#1e1c1a; --ink:#f2eee6; --ink2:#c2bcb0;
+    --mute:#8f887c; --line:#33302b; --acc:#ff6a33; --acc-ink:#140a05; --ok:#4cc982;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121110; --bg2:#1a1917; --card:#1e1c1a; --ink:#f2eee6; --ink2:#c2bcb0;
+  --mute:#8f887c; --line:#33302b; --acc:#ff6a33; --acc-ink:#140a05; --ok:#4cc982;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter Tight',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.eyebrow b{color:var(--acc);font-weight:500}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+nav.scrolled{border-bottom-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-.02em;text-decoration:none}
+.logo svg{width:28px;height:28px}
+.navlinks{display:flex;gap:28px;align-items:center;font-size:15px;color:var(--ink2)}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;font:600 15px 'Inter Tight',sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s,opacity .15s}
+.btn-ink{background:var(--ink);color:var(--bg);padding:10px 18px}
+.btn-acc{background:var(--acc);color:var(--acc-ink);padding:15px 24px;font-size:16px}
+.btn:hover{transform:translateY(-1px)}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+
+/* hero */
+.hero{padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(46px,6.4vw,84px);line-height:.98;letter-spacing:-.02em;margin:18px 0 22px}
+h1 em{color:var(--acc);font-style:italic}
+.lede{font-size:19px;color:var(--ink2);max-width:520px}
+.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--mute)}
+.trust span::before{content:"✓ ";color:var(--ok);font-weight:700}
+
+/* waitlist form */
+.wl{margin-top:30px;max-width:520px}
+.wl-row{display:flex;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px;box-shadow:0 1px 0 rgba(0,0,0,.02),0 12px 30px -18px rgba(0,0,0,.25)}
+.wl-row:focus-within{border-color:var(--acc)}
+.wl input,.wl select,.wl textarea{font:inherit;color:var(--ink);background:transparent;border:0;outline:none}
+.wl-row input{flex:1;min-width:0;padding:10px 16px;font-size:16px}
+.wl-row input::placeholder{color:var(--mute)}
+.wl-extra{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.wl.open .wl-extra{display:grid}
+.wl-extra label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mute)}
+.wl-extra .full{grid-column:1/-1}
+.wl-extra input,.wl-extra select,.wl-extra textarea{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px}
+.wl-extra input:focus,.wl-extra select:focus,.wl-extra textarea:focus{border-color:var(--acc)}
+.wl-extra textarea{resize:vertical;min-height:70px}
+.wl-note{font-size:13px;color:var(--mute);margin-top:10px;padding-left:18px}
+.wl-msg{display:none;margin-top:14px;padding:14px 18px;border-radius:12px;font-size:15px}
+.wl-msg.ok{display:block;background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--ok) 35%,transparent)}
+.wl-msg.err{display:block;background:color-mix(in srgb,var(--acc) 10%,transparent);border:1px solid color-mix(in srgb,var(--acc) 35%,transparent)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* hero visual: a running automation */
+.flow{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 30px 60px -40px rgba(0,0,0,.4);position:relative}
+.flow-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.live{display:inline-flex;align-items:center;gap:7px;font:500 12px 'JetBrains Mono',monospace;color:var(--ok)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.step{display:flex;gap:14px;align-items:flex-start;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);margin-bottom:10px;opacity:.35;transform:translateX(0);transition:opacity .4s,border-color .4s,background .4s}
+.step.on{opacity:1;border-color:var(--acc);background:color-mix(in srgb,var(--acc) 7%,var(--card))}
+.step.done{opacity:1}
+.step .ic{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--bg2);font-size:17px}
+.step .t{font-weight:600;font-size:15px}
+.step .d{font:400 12.5px/1.45 'JetBrains Mono',monospace;color:var(--mute);margin-top:2px}
+.step .tick{margin-left:auto;align-self:center;color:var(--ok);font-weight:700;opacity:0;transition:opacity .3s}
+.step.done .tick{opacity:1}
+.flow-foot{display:flex;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font:12px 'JetBrains Mono',monospace;color:var(--mute)}
+.flow-foot b{color:var(--ink);font-weight:500}
+
+/* sections */
+section{padding:96px 0}
+.sec-alt{background:var(--bg2)}
+h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(36px,4.6vw,58px);line-height:1.02;letter-spacing:-.015em;margin:14px 0 18px;max-width:760px}
+h2 em{font-style:italic;color:var(--acc)}
+.sub{color:var(--ink2);font-size:18px;max-width:620px}
+
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap}
+.marquee-in{display:inline-flex;gap:44px;animation:slide 40s linear infinite;font:500 14px 'JetBrains Mono',monospace;color:var(--mute)}
+.marquee-in span::before{content:"◆ ";color:var(--acc)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.card h3{font-size:20px;letter-spacing:-.01em;margin:14px 0 8px}
+.card p{color:var(--ink2);font-size:15.5px}
+.card .em{font-size:26px}
+.card .save{display:inline-block;margin-top:16px;font:500 12px 'JetBrains Mono',monospace;color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent);padding:5px 10px;border-radius:999px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--ink)}
+.steps > div{padding:28px 28px 0 0}
+.steps .n{font-family:'Instrument Serif',serif;font-size:64px;line-height:1;color:var(--acc)}
+.steps h3{font-size:22px;margin:12px 0 8px}
+.steps p{color:var(--ink2);font-size:15.5px;max-width:320px}
+.steps .wk{font:500 12px 'JetBrains Mono',monospace;color:var(--mute);margin-top:14px}
+
+.perks{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:12px}
+.perk-list{list-style:none;display:grid;gap:14px}
+.perk-list li{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.perk-list li b{display:block;font-size:16px}
+.perk-list li span{color:var(--ink2);font-size:15px}
+.perk-list .k{flex:none;font:600 13px 'JetBrains Mono',monospace;color:var(--acc);margin-top:2px}
+
+.faq{margin-top:40px;max-width:820px}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;font-size:19px;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-weight:400;color:var(--acc);font-size:24px;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--ink2);margin-top:12px;max-width:700px}
+
+.final{background:var(--ink);color:var(--bg);border-radius:28px;padding:72px 56px;text-align:center;position:relative;overflow:hidden}
+.final h2{margin:14px auto 16px;color:var(--bg)}
+.final .sub{margin:0 auto;color:color-mix(in srgb,var(--bg) 72%,transparent)}
+.final .eyebrow{color:color-mix(in srgb,var(--bg) 60%,transparent)}
+.final .wl{margin:30px auto 0}
+.final .wl-row{border-color:transparent}
+.final .wl-note{color:color-mix(in srgb,var(--bg) 60%,transparent);padding-left:0}
+.final .ring{position:absolute;width:520px;height:520px;border-radius:50%;border:2px dashed color-mix(in srgb,var(--acc) 40%,transparent);top:-260px;right:-180px;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+footer{padding:40px 0 56px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .hero{padding:40px 0 64px}
+  .hero .wrap,.perks{grid-template-columns:1fr;gap:40px}
+  .grid3,.steps{grid-template-columns:1fr}
+  .steps > div{padding:26px 0;border-bottom:1px solid var(--line)}
+  .navlinks a:not(.btn){display:none}
+  section{padding:72px 0}
+  .final{padding:56px 22px}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .wl-row{flex-direction:column;border-radius:18px}
+  .wl-row .btn{width:100%}
+  .wl-extra{grid-template-columns:1fr}
+  .wl-note{padding-left:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Loopwright home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><circle cx="16" cy="16" r="8" fill="none" stroke="#ff5b1f" stroke-width="3.5" stroke-dasharray="38 12" stroke-linecap="round"/></svg>
+      Loopwright
+    </a>
+    <div class="navlinks">
+      <a href="#what">What we automate</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-ink" href="#join">Join waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><b>●</b>&nbsp; Founding cohort · opening soon</div>
+      <h1>Your busywork,<br/><em>on autopilot.</em></h1>
+      <p class="lede">Loopwright builds and runs AI automations for small teams. We find the repetitive work eating your week, wire up AI to handle it, and keep it running. You get the hours back. No engineers to hire, no tools to learn.</p>
+
+      <form class="wl" id="wl-hero" novalidate>
+        <div class="wl-row">
+          <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Work email"/>
+          <button class="btn btn-acc" type="submit">Join the waitlist →</button>
+        </div>
+        <div class="wl-extra">
+          <label>Your name<input name="name" autocomplete="name"/></label>
+          <label>Company<input name="company" autocomplete="organization"/></label>
+          <label>Team size
+            <select name="team_size">
+              <option value="">Choose…</option>
+              <option>Just me</option><option>2–10</option><option>11–50</option><option>51–200</option><option>200+</option>
+            </select>
+          </label>
+          <label>Industry<input name="industry" placeholder="e.g. real estate, agency"/></label>
+          <label class="full">What would you automate first? <span style="opacity:.7">(optional)</span>
+            <textarea name="first_automation" placeholder="e.g. Sorting inbound leads and drafting first replies"></textarea>
+          </label>
+        </div>
+        <div class="hp" aria-hidden="true"><input name="_gotcha" tabindex="-1" autocomplete="off"/></div>
+        <p class="wl-note">Free to join. Founding members get 30% off for life. No spam, unsubscribe anytime.</p>
+        <div class="wl-msg" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="trust"><span>Done for you</span><span>Live in 2 weeks</span><span>Monitored 24/7</span></div>
+    </div>
+
+    <div class="flow" aria-label="Example automation running">
+      <div class="flow-head">
+        <span class="mono" style="font-size:13px;font-weight:500">lead-intake.loop</span>
+        <span class="live"><i></i>RUNNING</span>
+      </div>
+      <div class="step"><div class="ic">✉️</div><div><div class="t">New inquiry arrives</div><div class="d">from: sarah@brightpath.co · "pricing for 3 sites?"</div></div><span class="tick">✓</span></div>
+      <div class="step"><div class="ic">🧠</div><div><div class="t">AI reads &amp; qualifies</div><div class="d">intent: quote · budget: mid · fit score 0.91</div></div><span class="tick">✓</span></div>
+      <div class="step"><div class="ic">🗂️</div><div><div class="t">CRM updated</div><div class="d">deal created → stage "Qualified" · owner: Jess</div></div><span class="tick">✓</span></div>
+      <div class="step"><div class="ic">✍️</div><div><div class="t">Reply drafted in your voice</div><div class="d">queued for 1-click approval · 3 time slots offered</div></div><span class="tick">✓</span></div>
+      <div class="flow-foot"><span>avg. run <b>14s</b></span><span>this week <b id="runs">1,284</b> runs</span><span>saved <b>31 hrs</b></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-in">
+    <span>Lead intake</span><span>Invoice processing</span><span>Inbox triage</span><span>Meeting notes → tasks</span><span>Customer support replies</span><span>Report generation</span><span>Data entry</span><span>Appointment booking</span><span>Review responses</span><span>Onboarding docs</span>
+    <span>Lead intake</span><span>Invoice processing</span><span>Inbox triage</span><span>Meeting notes → tasks</span><span>Customer support replies</span><span>Report generation</span><span>Data entry</span><span>Appointment booking</span><span>Review responses</span><span>Onboarding docs</span>
+  </div>
+</div>
+
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow reveal">What we automate</div>
+    <h2 class="reveal">If you do it every week, <em>we can probably loop it.</em></h2>
+    <p class="sub reveal">We plug into the tools you already use: Gmail, Outlook, Slack, HubSpot, QuickBooks, Google Sheets, Shopify, and hundreds more. AI handles the judgment calls that used to need a person.</p>
+    <div class="grid3">
+      <div class="card reveal"><div class="em">📥</div><h3>Inbox &amp; lead handling</h3><p>Every inquiry gets read, sorted, logged in your CRM, and answered with a draft in your voice within minutes, not days.</p><span class="save">~8 hrs/week back</span></div>
+      <div class="card reveal"><div class="em">🧾</div><h3>Back-office paperwork</h3><p>Invoices, receipts, and contracts get pulled from email, read by AI, entered into your books, and flagged when something looks off.</p><span class="save">~6 hrs/week back</span></div>
+      <div class="card reveal"><div class="em">💬</div><h3>Customer support</h3><p>Common questions get answered instantly from your own docs. The tricky ones go to the right person with full context attached.</p><span class="save">~10 hrs/week back</span></div>
+      <div class="card reveal"><div class="em">📊</div><h3>Reporting</h3><p>Weekly numbers pulled from every system, summarized in plain English, and posted to Slack before your Monday coffee.</p><span class="save">~3 hrs/week back</span></div>
+      <div class="card reveal"><div class="em">📅</div><h3>Scheduling &amp; follow-ups</h3><p>Bookings, reminders, no-show nudges, and "just checking in" emails all go out on time without anyone having to remember them.</p><span class="save">~4 hrs/week back</span></div>
+      <div class="card reveal"><div class="em">🛠️</div><h3>Something weirder</h3><p>Got a process nobody else would understand? Those are our favorite. Tell us about it on the waitlist form.</p><span class="save">custom</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="sec-alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">How it works</div>
+    <h2 class="reveal">From messy process to <em>running loop</em> in about two weeks.</h2>
+    <div class="steps">
+      <div class="reveal"><div class="n">01</div><h3>Map</h3><p>A 45-minute call where we walk through your week and find the tasks with the biggest payoff. You get a written automation plan with time saved per task.</p><div class="wk">DAY 1–3</div></div>
+      <div class="reveal"><div class="n">02</div><h3>Build</h3><p>We build each workflow on your accounts, test it against your real data, and put human approval on anything sensitive. You stay in control.</p><div class="wk">DAY 4–12</div></div>
+      <div class="reveal"><div class="n">03</div><h3>Run</h3><p>Your loops go live. We monitor every run, fix breakages before you notice them, and send a monthly report of hours saved. Add new loops anytime.</p><div class="wk">ONGOING</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap perks">
+    <div>
+      <div class="eyebrow reveal">Why join now</div>
+      <h2 class="reveal">The founding cohort is <em>small on purpose.</em></h2>
+      <p class="sub reveal">We're onboarding a limited group of teams first so every build gets our full attention. Waitlist members get first access, in signup order.</p>
+    </div>
+    <ul class="perk-list">
+      <li class="reveal"><span class="k">01</span><div><b>30% off for life</b><span>Founding pricing stays locked as long as you're with us.</span></div></li>
+      <li class="reveal"><span class="k">02</span><div><b>Free automation audit</b><span>A written plan for your top time-sinks, even if you decide not to go ahead.</span></div></li>
+      <li class="reveal"><span class="k">03</span><div><b>First loop free</b><span>We build your first automation at no charge so you can see results before you pay.</span></div></li>
+      <li class="reveal"><span class="k">04</span><div><b>A say in the roadmap</b><span>Founding members help decide which integrations and templates we build next.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="sec-alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">FAQ</div>
+    <h2 class="reveal">Questions, answered.</h2>
+    <div class="faq">
+      <details><summary>Do I need any technical knowledge?</summary><p>No. We do the building, connecting, and maintaining. You tell us how the work gets done today, approve the plan, and use the results.</p></details>
+      <details><summary>Is this software, or a service?</summary><p>A service. We aren't asking you to learn another app. We design and run automations on the tools you already have, and you get a simple dashboard and a monthly report.</p></details>
+      <details><summary>What if the AI gets something wrong?</summary><p>Anything customer-facing or financial can require one-click human approval before it goes out. Every run is logged and monitored, and we tune the workflows as we learn your edge cases.</p></details>
+      <details><summary>What about my data?</summary><p>Automations run on your own accounts with the minimum permissions they need. We don't sell your data or use it to train models, and you can revoke access at any time.</p></details>
+      <details><summary>How much will it cost?</summary><p>Plans will be a flat monthly fee based on how many automations you run, with no per-task surprises. Waitlist members get founding pricing (30% off for life) and their first automation free. We'll share exact numbers with the waitlist before launch.</p></details>
+      <details><summary>When do you launch?</summary><p>We're onboarding the founding cohort in small batches, in waitlist order. Join now and we'll email you when your spot opens.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="final reveal">
+      <div class="ring" aria-hidden="true"></div>
+      <div class="eyebrow">Get early access</div>
+      <h2>Stop doing the work <em>a loop could do.</em></h2>
+      <p class="sub">Join the waitlist for founding pricing, a free automation audit, and your first loop on us.</p>
+      <form class="wl" id="wl-final" novalidate>
+        <div class="wl-row">
+          <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Work email"/>
+          <button class="btn btn-acc" type="submit">Reserve my spot →</button>
+        </div>
+        <div class="hp" aria-hidden="true"><input name="_gotcha" tabindex="-1" autocomplete="off"/></div>
+        <p class="wl-note">Takes 10 seconds. No credit card.</p>
+        <div class="wl-msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Loopwright. AI automation, built and run for you.</span>
+    <span><a href="mailto:hello@loopwright.ai">hello@loopwright.ai</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   WAITLIST — FORMSPREE
+   Replace YOUR_FORM_ID with the ID from your Formspree form
+   (the part after /f/ in its endpoint URL).
+   ============================================================ */
+var WAITLIST_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+function isConfigured(){ return WAITLIST_ENDPOINT.indexOf('YOUR_FORM_ID') === -1; }
+
+function setupWaitlist(form, source){
+  var msg = form.querySelector('.wl-msg');
+  var btn = form.querySelector('button[type=submit]');
+  var label = btn.textContent;
+  var email = form.querySelector('input[name=email]');
+
+  // Reveal the optional detail fields once someone engages with the hero form
+  if (form.querySelector('.wl-extra')) {
+    email.addEventListener('focus', function(){ form.classList.add('open'); });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'wl-msg'; msg.textContent = '';
+    var value = email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      msg.className = 'wl-msg err'; msg.textContent = 'Please enter a valid email address.';
+      email.focus(); return;
+    }
+    if (!isConfigured()) {
+      msg.className = 'wl-msg err';
+      msg.textContent = 'The waitlist isn’t connected yet. Set WAITLIST_ENDPOINT in loopwright/index.html.';
+      return;
+    }
+    var data = {};
+    new FormData(form).forEach(function(v, k){ data[k] = typeof v === 'string' ? v.trim() : v; });
+    data.source = source;
+    data.signed_up_at = new Date().toISOString();
+    data.page = location.href;
+    data._subject = 'New Loopwright waitlist signup: ' + value;
+
+    btn.disabled = true; btn.textContent = 'Joining…';
+    fetch(WAITLIST_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(r){
+      if (!r.ok) throw new Error('bad status ' + r.status);
+      form.reset(); form.classList.remove('open');
+      msg.className = 'wl-msg ok';
+      msg.innerHTML = '<b>You’re on the list.</b> We’ll email ' + value.replace(/[<>&"]/g, '') + ' when your founding spot opens.';
+      try { localStorage.setItem('lw_joined', '1'); } catch (_) {}
+    }).catch(function(){
+      msg.className = 'wl-msg err';
+      msg.textContent = 'Something went wrong. Please try again, or email hello@loopwright.ai.';
+    }).then(function(){ btn.disabled = false; btn.textContent = label; });
+  });
+}
+setupWaitlist(document.getElementById('wl-hero'), 'hero');
+setupWaitlist(document.getElementById('wl-final'), 'footer-cta');
+
+/* hero animation: cycle through the steps */
+(function(){
+  var steps = document.querySelectorAll('.flow .step');
+  var runs = document.getElementById('runs');
+  var count = 1284, i = 0;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    steps.forEach(function(s){ s.classList.add('done'); }); return;
+  }
+  function tick(){
+    if (i > 0) { steps[i-1].classList.remove('on'); steps[i-1].classList.add('done'); }
+    if (i === steps.length) {
+      setTimeout(function(){
+        steps.forEach(function(s){ s.classList.remove('done'); });
+        runs.textContent = (++count).toLocaleString();
+        i = 0; tick();
+      }, 1600);
+      return;
+    }
+    steps[i++].classList.add('on');
+    setTimeout(tick, 1100);
+  }
+  setTimeout(tick, 500);
+})();
+
+/* nav border on scroll + reveal on scroll */
+var nav = document.getElementById('nav');
+addEventListener('scroll', function(){ nav.classList.toggle('scrolled', scrollY > 8); }, { passive: true });
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
